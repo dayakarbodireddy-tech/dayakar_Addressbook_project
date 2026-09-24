@@ -8,3 +8,4 @@ void saveContactsToFile(AddressBook *addressBook) {
 void loadContactsFromFile(AddressBook *addressBook) {
     
 }
+
