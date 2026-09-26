@@ -93,25 +93,25 @@ int validateemail(char email[])
 
 void listContacts(AddressBook *addressBook, int sortCriteria) 
 {
-    // Sort contacts based on the choosen criteria
-//      int cricteria
-//     printf("Sort based on :\n1.Name\n2.phone\n3.email\n");/*
-//     scanf("%d",&criteria);
-//     if 1 
-//     sorted based on name
-//     if 2
-//     sorted based on phone
-//     if 3
-//     sorted on email
-//     */
-//     for(int i=0;i<addressBook->contactCount;i++)
-//     {
-//         printf("%s\t%s\t%s\n",addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
-//     }
-    
-    
- }
+    for(int i=0;i<addressBook->contactCount-1;i++)
+    {
+        for(int j=i+1;j<addressBook->contactCount;j++)
+        {
+            if(strcmp(addressBook->contacts[i].name,addressBook->contacts[j].name)>0)
+            {
+                Contact temp=addressBook->contacts[i];
+                addressBook->contacts[i]=addressBook->contacts[j];
+                addressBook->contacts[j]=temp;
 
+            }
+        }
+    }
+    printf("Name\tcontact_num\temail\n");
+    for(int i=0;i<addressBook->contactCount;i++)
+    {
+        printf("%s\t\t%s\t%s\n",addressBook->contacts[i].name,addressBook->contacts[i].phone,addressBook->contacts[i].email);
+    }
+}
 void initialize(AddressBook *addressBook) {
     addressBook->contactCount = 0;
     
@@ -129,7 +129,11 @@ void createContact(AddressBook *addressBook)
 {
 	/* Define the logic to create a Contacts */
     int flag=0;
-    
+    if(addressBook->contactCount>=MAX_CONTACTS)
+    {
+        printf("address book is full\n");
+        return;
+    }
     printf("Enter the name of contact: ");
     scanf(" %[^\n]",addressBook->contacts[addressBook->contactCount].name);
    
@@ -168,38 +172,7 @@ void createContact(AddressBook *addressBook)
     }else{
         printf("invalid input\n");
     }
-//     if(flag==1)
-//     {
-//         printf("Invalid input\n");
-       
-//     }else{
-        
-//         while(1)
-//         {
-//             flag=0;
-//         printf("enter the contact number: "); 
-//         scanf(" %s",addressBook->contacts[addressBook->contactCount].phone);
-//         if(strlen(addressBook->contacts[addressBook->contactCount].phone)!=10)
-//         {
-//             flag=1;
-//         }
-//         if(addressBook->contacts[addressBook->contactCount].phone[0]<'6'||addressBook->contacts[addressBook->contactCount].phone[0]>'9')
-//         {
-//             flag=1;
-//         }
     
-//         if(flag==1)
-//         {
-//            printf("invalid number\n");
-//         }else{
-//             printf("enter the email id: ");
-//             scanf(" %s",addressBook->contacts[addressBook->contactCount].email);
-//             break;
-//         }
-//         if()
-//     }
-    
-// }
 
 
     
