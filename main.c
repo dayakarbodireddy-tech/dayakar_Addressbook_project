@@ -5,6 +5,7 @@ int main() {
     int choice;
     AddressBook addressBook;
     initialize(&addressBook); // Initialize the address book
+    int sortChoice;
 
     do {
         printf("\nAddress Book Menu:\n");
