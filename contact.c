@@ -192,8 +192,8 @@ default:printf("invalid choice for listing\n");
 void initialize(AddressBook *addressBook) {
     addressBook->contactCount = 0;
     
-    // Load contacts from file during initialization (After files)
-    //loadContactsFromFile(addressBook);
+   // Load contacts from file during initialization (After files)
+    loadContactsFromFile(addressBook);
 }
 
 void saveAndExit(AddressBook *addressBook) {
@@ -304,7 +304,7 @@ void searchContact(AddressBook *addressBook)
             int index=match[name_choice-1];
             printf("selected contact is:\n");
             printf("%s\t%s\t%s\n",addressBook->contacts[index].name,addressBook->contacts[index].phone,addressBook->contacts[index].email);
-
+            break;
         }else{
             printf("invalid selction\n");
         }
@@ -506,7 +506,7 @@ void editContact(AddressBook *addressBook)
             printf("email updated successfully\n");
             break;
         }
-        break;
+        //break;
     }else{
         printf("contact email not found\n");
     }
